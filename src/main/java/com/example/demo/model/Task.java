@@ -14,7 +14,6 @@ import lombok.Data;
 @Data
 public class Task {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column (name = "class_code")
 	private int classCode;
 	

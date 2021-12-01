@@ -16,9 +16,17 @@ public class TaskService {
 	@Autowired
 	TaskRepo taskRepo;
 	
+	public void addInitialNumber(int classCode,Long value) {
+		Task task=new Task();
+		task.setClassCode(classCode);
+		task.setValue(value);
+		taskRepo.save(task);
+	}
+	
 	public Object getNextNumber(int classCode) {
 		try {
 			Task task=new Task();
+			task.setClassCode(classCode);
 			TaskDto t=null;
 			return t;
 		}
