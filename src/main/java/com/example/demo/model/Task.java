@@ -17,5 +17,5 @@ public class Task {
 	@Column (name = "class_code")
 	private int classCode;
 	
-	private Long value;
+	private double value;
 }

@@ -12,7 +12,7 @@ public class TestDataLoader {
 	TaskService service;
 	
 	public void loadDefaultValue() {
-		service.addInitialNumber(101,10L);
+		service.addInitialNumber(101,10d);
 	}
 
 }

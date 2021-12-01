@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class TaskDto {
 	
-	Long oldValue;
-	Long newValue;
+	double oldValue;
+	double newValue;
 
 }

@@ -16,7 +16,7 @@ public class TaskService {
 	@Autowired
 	TaskRepo taskRepo;
 	
-	public void addInitialNumber(int classCode,Long value) {
+	public void addInitialNumber(int classCode,double value) {
 		Task task=new Task();
 		task.setClassCode(classCode);
 		task.setValue(value);
@@ -25,9 +25,13 @@ public class TaskService {
 	
 	public Object getNextNumber(int classCode) {
 		try {
+			double previous=taskRepo.getPreviousValue();
 			Task task=new Task();
 			task.setClassCode(classCode);
-			TaskDto t=null;
+			double next=(previous%9 + 1)*Math.pow(10, (previous/9))-1;
+			TaskDto t=new TaskDto();
+			t.setOldValue(previous);
+			t.setNewValue(next);
 			return t;
 		}
 		catch (Exception e) {
