@@ -7,8 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
 @Table (name = "task_tbl")
+@Data
 public class Task {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,20 +19,4 @@ public class Task {
 	private int classCode;
 	
 	private Long value;
-
-	public int getClassCode() {
-		return classCode;
-	}
-
-	public void setClassCode(int classCode) {
-		this.classCode = classCode;
-	}
-
-	public Long getValue() {
-		return value;
-	}
-
-	public void setValue(Long value) {
-		this.value = value;
-	}	
 }

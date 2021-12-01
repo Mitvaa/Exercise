@@ -1,10 +1,34 @@
 package com.example.demo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.service.TaskService;
+import com.example.demo.util.DemoUtil;
+
+import lombok.extern.slf4j.Slf4j;
+
+@CrossOrigin
 @RestController
 @RequestMapping("/")
+@Slf4j
 public class TaskController {
+	
+	@Autowired
+	TaskService taskService;
+	
+	@GetMapping("get-next-number/{classCode}")
+	public ResponseEntity<Object> fetchNextNumber(@PathVariable("classCode") int classCode) {
+		log.info(" inside fetchNextNumber");
+		Object obj = taskService.getNextNumber(classCode);
+		return new ResponseEntity<>(obj,
+				DemoUtil.isObjectValid(obj) ? HttpStatus.OK : HttpStatus.EXPECTATION_FAILED);
+	}
 
 }
