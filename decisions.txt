@@ -1,0 +1,13 @@
+In architecture,
+we have one class with fields classCode and value.
+everytime we call a method fetchNextNumber, pass a unique code in parameter.
+
+the record will be permanently stored in db.
+
+In test data loader, I have passed 10 as a default first value. we can change that or can make a different api to set or update that if needed.
+
+I have used exception handling as well.
+
+for multi threading (delay 5 seconds),given a logic using in controller, config and service in comments. 
+
+Demo util is used to check object if object is valid then only it will return success.

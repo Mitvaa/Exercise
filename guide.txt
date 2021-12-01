@@ -1,0 +1,5 @@
+I have created one method to assign initial value to table.
+For consistent database I have used mysql. 
+
+You need to give unique classCode everytime you call the api fetchNextNumber.
+This api will return previous and next value after calculations.
