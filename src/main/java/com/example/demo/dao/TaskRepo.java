@@ -9,6 +9,6 @@ import com.example.demo.model.Task;
 public interface TaskRepo extends CrudRepository<Task, Integer> {
 	
 	@Query(value = "SELECT value FROM task_tbl ORDER BY value desc limit 1;" , nativeQuery = true)
-	double getPreviousValue();
+	int getPreviousValue();
 
 }

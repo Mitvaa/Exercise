@@ -16,26 +16,51 @@ public class TaskService {
 	@Autowired
 	TaskRepo taskRepo;
 	
-	public void addInitialNumber(int classCode,double value) {
+	public void addInitialNumber(int classCode,int value) {
 		Task task=new Task();
 		task.setClassCode(classCode);
 		task.setValue(value);
 		taskRepo.save(task);
 	}
+	static int getSum(int n)
+	{
+	    int sum = 0;
+	    while (n != 0)
+	    {
+	        sum = sum + n % 10;
+	        n = n / 10;
+	    }
+	    return sum;
+	}
+	static int nextNumber(int N)
+	{
+	    int i = 1;
+	    int n=0;
+	    while (1 != 0)
+	    {
+	        // Checking if number has
+	        // sum of digits = N
+	        if (getSum(i) == N)
+	        {
+	            System.out.print(i);
+	            n=i;
+	            break;
+	        }
+	        i++;
+	    }
+	    return n;
+	}
 	
 	public Object getNextNumber(int classCode) {
 		try {
-			double previous=taskRepo.getPreviousValue();
-			System.out.print((previous % 9 + 1) *
-		            Math.pow(10, (previous / 9)) - 1);
+			int previous=taskRepo.getPreviousValue();
 			Task task=new Task();
 			task.setClassCode(classCode);
-			double next=((previous % 9 + 1) *
-		            Math.pow(10, (previous / 9)) - 1);
+			int n=nextNumber(previous);
 			TaskDto t=new TaskDto();
 			t.setOldValue(previous);
-			t.setNewValue(next);
-			task.setValue(next);
+			t.setNewValue(n);
+			task.setValue(n);
 			taskRepo.save(task);
 			return t;
 		}
