@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.TaskRepo;
@@ -51,6 +52,8 @@ public class TaskService {
 	    return n;
 	}
 	
+//	@Async
+//need to change return type to CompletableFuture
 	public Object getNextNumber(int classCode) {
 		try {
 			int previous=taskRepo.getPreviousValue();
