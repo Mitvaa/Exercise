@@ -26,12 +26,17 @@ public class TaskService {
 	public Object getNextNumber(int classCode) {
 		try {
 			double previous=taskRepo.getPreviousValue();
+			System.out.print((previous % 9 + 1) *
+		            Math.pow(10, (previous / 9)) - 1);
 			Task task=new Task();
 			task.setClassCode(classCode);
-			double next=(previous%9 + 1)*Math.pow(10, (previous/9))-1;
+			double next=((previous % 9 + 1) *
+		            Math.pow(10, (previous / 9)) - 1);
 			TaskDto t=new TaskDto();
 			t.setOldValue(previous);
 			t.setNewValue(next);
+			task.setValue(next);
+			taskRepo.save(task);
 			return t;
 		}
 		catch (Exception e) {
